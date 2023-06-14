@@ -17,6 +17,7 @@ public class ServiceOneController {
     @PutMapping("/sendMessage/{message}")
     public String getString(@PathVariable String message){
         kafkaProducer.sendMessage("default",message);
+        System.out.println("kkkk");
         return "Message sent successfully";
     }
 }
