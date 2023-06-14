@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone repository') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: 'your-branch-name']], userRemoteConfigs: [[url: 'https://github.com/your-repo.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'feature']], userRemoteConfigs: [[url: 'https://github.com/charan-git-official/miniature-spork-1.git']]])
             }
         }
         
@@ -16,15 +16,15 @@ pipeline {
         
         stage('Build Docker image') {
             steps {
-                sh 'docker build -t your-image-name .'
+                sh 'docker build -t service-1 .'
             }
         }
         
         stage('Push Docker image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'your-docker-credentials-id', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-                    sh 'docker push your-image-name'
+                withCredentials([usernamePassword(credentialsId: 'docker-creds', usernameVariable: 'sricharanp', passwordVariable: '14KT1a@0371')]) {
+                    sh 'docker login -u $sricharanp -p $14KT1a@0371'
+                    sh 'docker push service-1'
                 }
             }
         }
