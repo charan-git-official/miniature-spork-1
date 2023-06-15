@@ -10,7 +10,7 @@ pipeline {
         
         stage('Build microservice') {
             steps {
-                bat 'mvn clean package' // Assuming Maven is used for building
+                bat 'mvn clean package -X' // Assuming Maven is used for building
             }
         }
         
